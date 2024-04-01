@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827255005523",
+    "project_id": "unisathi-2f538",
+    "storage_bucket": "unisathi-2f538.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827255005523:android:cbe866c17dcf54573481a6",
+        "android_client_info": {
+          "package_name": "com.example.kinbech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK91H9-QaRRexg2MQgvc7U8J_dVLw_HpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
