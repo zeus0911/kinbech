@@ -3,6 +3,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProductScreen extends StatefulWidget {
+  final String image;
+  final String title;
+  final String description;
+  final String price;
+  final List<String> features;
+  final double latitude;
+  final double longitude;
+
+  EditProductScreen({
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.features,
+    required this.latitude,
+    required this.longitude,
+  });
+
   @override
   _EditProductScreenState createState() => _EditProductScreenState();
 }
@@ -12,7 +30,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextEditingController _descriptionController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
 
-  final String _image;
+  late String _image;
   late String _title;
   late String _description;
   late String _price;
@@ -23,33 +41,18 @@ class _EditProductScreenState extends State<EditProductScreen> {
   @override
   void initState() {
     super.initState();
-    _loadProductDetails();
-  }
+    _image = widget.image;
+    _title = widget.title;
+    _description = widget.description;
+    _price = widget.price;
+    _features = List<String>.from(widget.features);
+    _latitude = widget.latitude;
+    _longitude = widget.longitude;
 
-  Future<void> _loadProductDetails() async {
-    try {
-      // Fetch product details from Firestore
-      DocumentSnapshot productSnapshot = await FirebaseFirestore.instance.collection('Products').doc().get();
-      Map<String, dynamic> data = productSnapshot.data() as Map<String, dynamic>;
-
-      setState(() {
-        _image = data['image'];
-        _title = data['title'];
-        _description = data['description'];
-        _price = data['price'];
-        _features = List<String>.from(data['features']);
-        _latitude = data['latitude'];
-        _longitude = data['longitude'];
-
-        // Set initial values to text controllers
-        _titleController.text = _title;
-        _descriptionController.text = _description;
-        _priceController.text = _price;
-      });
-    } catch (error) {
-      print('Error loading product details: $error');
-      // Handle error as needed
-    }
+    // Set initial values to text controllers
+    _titleController.text = _title;
+    _descriptionController.text = _description;
+    _priceController.text = _price;
   }
 
   @override

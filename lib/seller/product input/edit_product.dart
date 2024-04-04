@@ -10,7 +10,7 @@ class ProductDetailPage extends StatelessWidget {
   final double latitude;
   final double longitude;
 
-  const ProductDetailPage({
+  ProductDetailPage({
     required this.image,
     required this.title,
     required this.description,
